@@ -44,14 +44,14 @@ driver.maximize_window()
 driver.get("https://www.messenger.com/")
 
 #login
-userid = driver.find_element_by_id("email").click()
-userid.send_keys("<your emailid>")  #email id
+wait = WebDriverWait(driver, 10)
+username = wait.until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email'][@class='inputtext _55r1 _43di']")))
+username.send_keys("<youremailid>")  #email-id
 driver.find_element_by_id("pass").send_keys("<yourpassword>")  #password
 driver.find_element_by_id("loginbutton").click()
 driver.find_element_by_tag_name('html').send_keys(Keys.ESCAPE)
 
 #select person x
-wait = WebDriverWait(driver, 10)
 xsel = wait.until(EC.visibility_of_element_located((By.XPATH, "//a[@data-href='https://www.messenger.com/t/firstname.lastname.38' and @class='_1ht5 _2il3 _6zka _5l-3 _3itx']")))  # edit the url in this line to appropriate one    
 xsel.click()
 
